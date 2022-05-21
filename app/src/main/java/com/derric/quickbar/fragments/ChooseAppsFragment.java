@@ -72,6 +72,7 @@ public class ChooseAppsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+//        System.out.println("==========================OnCreateView callded");
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_choose_apps, container, false);
         RecyclerView recyclerView = layout.findViewById(R.id.recycler_view);
@@ -80,7 +81,7 @@ public class ChooseAppsFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         DividerItemDecoration divider =  new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(divider);
-        PackageManager packageManager = getContext().getPackageManager();
+//        PackageManager packageManager = getContext().getPackageManager();
 //        List<AppInfo> appInfos = QuickBarManager.getAllInstalledApps(packageManager,getContext());
 //        List<AppInfo> appsWithActivity = new ArrayList<>();
 //        for (AppInfo appInfo : appInfos) {
@@ -92,15 +93,21 @@ public class ChooseAppsFragment extends Fragment {
         //If user selected apps are there, then when showing the list, mark those selected apps checked
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         Set<String> selectedApps = preferences.getStringSet("selectedApps", null);
+//        System.out.println("Selected apsp: are ======OnCreateView "+selectedApps);
+        List<String> appNames = new ArrayList<>();
+        if (selectedApps != null) {
+            for (String app : selectedApps) {
+                String[] split = app.split(":");
+                appNames.add(split[0]);
+            }
+        }
         if (selectedApps != null) {
             for (AppInfo appInfo : appInfos) {
                 String[] split = appInfo.getPackageName().split(":");
-                if (selectedApps.contains(split[0])) {
+                if (appNames.contains(split[0])) {
                     appInfo.setSelected(true);
                 }
             }
-        }else{
-//            System.out.println("SelectedApps is nulllllllllllllllllll");
         }
         adapter = new ChooseAppsAdapter(appInfos, getContext());
         recyclerView.setAdapter(adapter);

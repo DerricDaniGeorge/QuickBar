@@ -37,6 +37,13 @@ public class ChooseAppsActivity extends AppCompatActivity {
         //Set main activity layout
         setContentView(R.layout.activity_main);
         appInfos = (ArrayList<AppInfo>) getIntent().getSerializableExtra(AppConstants.APP_INFOS);
+        for(AppInfo appInfo:appInfos){
+            if(appInfo.isSelected()){
+                appInfo.setSelected(false);
+//                System.out.println(appInfo.getPackageName()+ " is arelready selec=====ted====== unseleing it");
+
+            }
+        }
         //To set a fragment to an activity, we have to first create a fragment transaction
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         //Create the fragment object
@@ -57,6 +64,7 @@ public class ChooseAppsActivity extends AppCompatActivity {
     //When the back button / back event occurred
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         saveSelectedApps();
 
         if (chooseAppsFragment.getAdapter().isAnyChange()) {
@@ -82,7 +90,7 @@ public class ChooseAppsActivity extends AppCompatActivity {
             Toast.makeText(this,"Please stop and re-launch quickbar if there is any changes in settings",Toast.LENGTH_SHORT).show();
         }
 //
-        super.onBackPressed();
+
     }
 
     @Override
@@ -99,9 +107,10 @@ public class ChooseAppsActivity extends AppCompatActivity {
         for (AppInfo appInfo : appInfos) {
             if (appInfo.isSelected()) {
 //                builder.append(appInfo.getPackageName()).append(',');
-//                System.out.println("App: "+appInfo.getPackageName()+"
-//                saved to settings");
+//                System.out.println("ChooseApps: App: "+appInfo.getPackageName()+" saved to settings");
                 selectedApps.add(appInfo.getPackageName());
+                //clear selection after saved
+//                appInfo.setSelected(false);
             }
         }
 //        if (chooseAppsFragment.getAllAppsSelected()) {
@@ -109,6 +118,7 @@ public class ChooseAppsActivity extends AppCompatActivity {
 //        } else {
 //            editor.putBoolean("wasAllAppsSelected", false);
 //        }
+//        System.out.println("===================== Choose apps---Insdie saveApps: "+selectedApps);
         editor.putStringSet("selectedApps", selectedApps);
         editor.commit();
     }

@@ -17,7 +17,7 @@
         android:id="@+id/settings_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"/>
+        android:text="Customize"/>
     <Space
         android:layout_width="match_parent"
         android:layout_height="20dp"/>

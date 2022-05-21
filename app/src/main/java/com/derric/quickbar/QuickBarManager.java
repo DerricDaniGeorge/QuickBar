@@ -254,6 +254,7 @@ public class QuickBarManager {
 //        } else {
         //Show only user selected apps
         Set<String> userSelectedApps = settings.selectedApps;
+//        System.out.println(userSelectedApps);
         // This null check is required, if this app is a fresh install and user didn't choose
         //any apps yet
         if (userSelectedApps != null) {

@@ -38,6 +38,7 @@
         android:singleLineTitle="false"
         android:summary="Hide QuickBar when an app is launched from QuickBar"
         android:title="Hide QuickBar"
+        android:defaultValue="true"
         app:iconSpaceReserved="false" />
 <!--    <SwitchPreferenceCompat-->
 <!--        android:key="hideLogo"-->
@@ -127,13 +128,13 @@
     <SeekBarPreference
         android:key="showIconSize"
         android:title="Adjust show icon size"
-        app:defaultValue="15"
+        app:defaultValue="22"
         app:iconSpaceReserved="false"
         app:min="5" />
     <SeekBarPreference
         android:key="hideIconSize"
         android:title="Adjust hide icon size"
-        app:defaultValue="15"
+        app:defaultValue="22"
         app:iconSpaceReserved="false"
         app:min="5" />
     <SeekBarPreference

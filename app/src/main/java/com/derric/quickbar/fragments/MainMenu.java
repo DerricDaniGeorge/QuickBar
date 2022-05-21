@@ -3,6 +3,7 @@ package com.derric.quickbar.fragments;
 import android.app.Activity;
 import android.app.Service;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -132,9 +134,26 @@ public class MainMenu extends Fragment {
         }
         //if none of the above if conditions satisfies means, we have to ask the user for overlay permission
         if (askForOverlayPermission) {
-            Intent askIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + context.getPackageName()));
-            //We must add "SYSTEM_ALERT_WINDOW" in android manifest file...otherwise it won't work
-            startActivityForResult(askIntent, OVERLAY_PERMISSION_REQUEST_CODE);
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setTitle("Allow permission");
+            builder.setMessage("Inorder to let Quickbar accessible from all screens, please allow 'Appear on top' or 'Draw over other apps' permission in device settings against Quickbar and come back to app. This is an one time process");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                    Intent askIntent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + context.getPackageName()));
+                    //We must add "SYSTEM_ALERT_WINDOW" in android manifest file...otherwise it won't work
+                    startActivityForResult(askIntent, OVERLAY_PERMISSION_REQUEST_CODE);
+                }
+            });
+            builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog askPermissionDialog =  builder.create();
+            askPermissionDialog.show();
         }
 
     }
