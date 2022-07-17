@@ -30,6 +30,7 @@ public class SettingsMenu extends PreferenceFragmentCompat {
     public SettingsMenu(ArrayList<AppInfo> appInfos) {
         this.appInfos = appInfos;
     }
+    public SettingsMenu(){}
 
     public boolean isSettingsChanged() {
         return this.isSettingsChanged;

@@ -33,6 +33,11 @@ import java.util.Set;
 public class ChooseAppsFragment extends Fragment {
     //    private static final String APP_INFOS = "app_infos";
     private ArrayList<AppInfo> appInfos;
+
+    //A public no arugment constructor is must for all subclasses of Fragment
+    public ChooseAppsFragment() {
+    }
+
     private ChooseAppsAdapter adapter;
 //    private boolean isAllAppsSelected;
 

@@ -3,6 +3,7 @@ package com.derric.quickbar.services;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -105,7 +106,7 @@ public class QuickBarService extends Service {
         builder.setWhen(System.currentTimeMillis());
         builder.setSmallIcon(R.drawable.quickbar_logo1_rounded);
         builder.setContentTitle("QuickBar: Active");
-        builder.setContentText("QuickBar is running");
+        builder.setContentText("Tap here to open QuickBar settings");
         //OnGoing notification cannot be dismissed by user.
         builder.setOngoing(true);
         builder.setPriority(NotificationCompat.PRIORITY_MIN);
@@ -113,9 +114,9 @@ public class QuickBarService extends Service {
 
         //When user clicks the notification , open the app
         //Todo : Even if the app is opened, if we click the notification , it will again open the app. Need to fix it.
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-//                new Intent(this, LoadingActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
-//        builder.setContentIntent(pendingIntent);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+                new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pendingIntent);
         return builder.build();
     }
 
@@ -149,8 +150,8 @@ public class QuickBarService extends Service {
         settings.hideIconTransparency = preferences.getInt("hideIconTransparency", 100);
         settings.showIconTransparency = preferences.getInt("showIconTransparency", 100);
         settings.appIconSize = preferences.getInt("appIconSize", 35);
-        settings.showIconSize = preferences.getInt("showIconSize", 22);
-        settings.hideIconSize = preferences.getInt("hideIconSize", 22);
+        settings.showIconSize = preferences.getInt("showIconSize", 25);
+        settings.hideIconSize = preferences.getInt("hideIconSize", 25);
         settings.hideQuickBarSeconds = preferences.getInt("hideQuickBarSeconds", 5);
         settings.showIconChooseSide = preferences.getString("showIconChooseSide", AppConstants.LEFT);
         settings.showIconChoosePosition = preferences.getString("showIconChoosePosition", AppConstants.CENTER);
