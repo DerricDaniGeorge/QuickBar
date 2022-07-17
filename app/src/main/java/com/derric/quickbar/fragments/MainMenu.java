@@ -55,6 +55,7 @@ public class MainMenu extends Fragment {
     private ArrayList<AppInfo> appInfos;
     private SettingsMenu settingsMenu;
 
+    //A public no arugment constructor is must for all subclasses of Fragment
     public MainMenu() {
         // Required empty public constructor
     }
