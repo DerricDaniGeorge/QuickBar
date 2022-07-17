@@ -41,7 +41,6 @@ public class ChooseAppsActivity extends AppCompatActivity {
             if(appInfo.isSelected()){
                 appInfo.setSelected(false);
 //                System.out.println(appInfo.getPackageName()+ " is arelready selec=====ted====== unseleing it");
-
             }
         }
         //To set a fragment to an activity, we have to first create a fragment transaction
@@ -64,6 +63,7 @@ public class ChooseAppsActivity extends AppCompatActivity {
     //When the back button / back event occurred
     @Override
     public void onBackPressed() {
+//        Log.d("back","backPreesed");
         super.onBackPressed();
         saveSelectedApps();
 
@@ -96,10 +96,13 @@ public class ChooseAppsActivity extends AppCompatActivity {
     @Override
     public void onDestroy() {
         super.onDestroy();
+//        Log.d("destroy","onDestyroy");
+
         saveSelectedApps();
     }
 
     private void saveSelectedApps() {
+//        Log.d("save","Inside saveselectedApps");
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = preferences.edit();
 //        StringBuilder builder = new StringBuilder();
@@ -107,7 +110,7 @@ public class ChooseAppsActivity extends AppCompatActivity {
         for (AppInfo appInfo : appInfos) {
             if (appInfo.isSelected()) {
 //                builder.append(appInfo.getPackageName()).append(',');
-//                System.out.println("ChooseApps: App: "+appInfo.getPackageName()+" saved to settings");
+//                System.out.println("App: "+appInfo.getPackageName()+" saved to settings");
                 selectedApps.add(appInfo.getPackageName());
                 //clear selection after saved
 //                appInfo.setSelected(false);

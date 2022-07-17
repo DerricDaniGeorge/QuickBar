@@ -72,14 +72,13 @@ public class ChooseAppsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-//        System.out.println("==========================OnCreateView callded");
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_choose_apps, container, false);
         RecyclerView recyclerView = layout.findViewById(R.id.recycler_view);
 //        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(this.getContext(), 2);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this.getContext());
         recyclerView.setLayoutManager(layoutManager);
-        DividerItemDecoration divider =  new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL);
+        DividerItemDecoration divider = new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(divider);
 //        PackageManager packageManager = getContext().getPackageManager();
 //        List<AppInfo> appInfos = QuickBarManager.getAllInstalledApps(packageManager,getContext());
@@ -93,7 +92,6 @@ public class ChooseAppsFragment extends Fragment {
         //If user selected apps are there, then when showing the list, mark those selected apps checked
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         Set<String> selectedApps = preferences.getStringSet("selectedApps", null);
-//        System.out.println("Selected apsp: are ======OnCreateView "+selectedApps);
         List<String> appNames = new ArrayList<>();
         if (selectedApps != null) {
             for (String app : selectedApps) {

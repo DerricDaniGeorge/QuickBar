@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //        setTheme(R.style.Base_Theme_AppCompat);
         //When the app is started, fetch the app details behind the scene.
         //As it has nothing to do with view, we can use java thread executor
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
         super.onCreate(savedInstanceState);
         //Set main activity layout
         setContentView(R.layout.activity_main);

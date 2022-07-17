@@ -38,7 +38,7 @@ public class ColorPalettePreference extends Preference {
     public void onBindViewHolder(PreferenceViewHolder holder) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         RelativeLayout colorPaletteLayout = holder.itemView.findViewById(R.id.color_palette_layout);
-        int colorId = preferences.getInt("quickBarColor", R.color.grey_white);
+        int colorId = preferences.getInt("quickBarColor", R.color.google_sheet_green);
         switch (colorId) {
             case R.color.blue:
                 colorPaletteLayout.findViewById(R.id.blue).setSelected(true);

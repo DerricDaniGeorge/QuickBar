@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
@@ -41,6 +38,7 @@ public class SettingsMenu extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.settings_layout, rootKey);
+        Toast.makeText(getContext(),"Scroll down for more settings....", Toast.LENGTH_SHORT).show();
 //        getPreferenceScreen().getExtras().putSerializable(AppConstants.APP_INFOS, appInfos);
         Preference chooseApp = findPreference("chooseApps");
         chooseApp.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
@@ -61,7 +59,7 @@ public class SettingsMenu extends PreferenceFragmentCompat {
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
                 //Show only user selected Apps here
                 ArrayList<AppInfo> userSelectedApps = QuickBarUtils.getUserSelectedApps(preferences.getStringSet("selectedApps", null), appInfos);
-                if (userSelectedApps == null || userSelectedApps.isEmpty()) {
+                if(userSelectedApps == null || userSelectedApps.isEmpty()){
                     userSelectedApps = chooseRandomAppsAndSave();
                 }
                 orderAppsIntent.putExtra(AppConstants.APP_INFOS, userSelectedApps);
@@ -73,9 +71,12 @@ public class SettingsMenu extends PreferenceFragmentCompat {
 //        SeekBarPreference barTransparencySeekBar = (SeekBarPreference) findPreference("quickbarTransparency");
 //        barTransparencySeekBar
 
+//        hideQuickBarSeconds
+        SeekBarPreference hideQuickBarSlider = (SeekBarPreference) findPreference("hideQuickBarSeconds");
+
     }
 
-    private ArrayList<AppInfo> chooseRandomAppsAndSave() {
+    private ArrayList<AppInfo> chooseRandomAppsAndSave(){
         //There are no user selected apps, means user is using the app for first time
         //show some random 5 apps
         ArrayList<AppInfo> appsToShow = new ArrayList<>();
@@ -104,5 +105,6 @@ public class SettingsMenu extends PreferenceFragmentCompat {
         editor.commit();
         return appsToShow;
     }
+
 
 }

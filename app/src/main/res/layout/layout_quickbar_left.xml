@@ -29,8 +29,8 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:contentDescription="@string/hide_bar"
-            android:rotation="90"
-            android:src="@drawable/love" />
+            android:rotation="270"
+            android:src="@drawable/ic_android_black_24dp" />
 
     </LinearLayout>
 </LinearLayout>

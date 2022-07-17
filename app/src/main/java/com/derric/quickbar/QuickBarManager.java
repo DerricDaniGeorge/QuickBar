@@ -1,6 +1,5 @@
 package com.derric.quickbar;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,7 +7,6 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -18,20 +16,15 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewAnimationUtils;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.TranslateAnimation;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
-import android.widget.ViewAnimator;
 
 import androidx.annotation.NonNull;
 import androidx.preference.PreferenceManager;
@@ -45,8 +38,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -195,6 +186,7 @@ public class QuickBarManager {
         int showIconPixels = QuickBarUtils.dpToPx(settings.showIconSize, mContext);
         params.width = showIconPixels;
         params.height = showIconPixels;
+//        params.verticalMargin = 20;
         params.type = Build.VERSION.SDK_INT <= Build.VERSION_CODES.N_MR1 ?
                 WindowManager.LayoutParams.TYPE_PRIORITY_PHONE : WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
         params.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE |
@@ -254,7 +246,6 @@ public class QuickBarManager {
 //        } else {
         //Show only user selected apps
         Set<String> userSelectedApps = settings.selectedApps;
-//        System.out.println(userSelectedApps);
         // This null check is required, if this app is a fresh install and user didn't choose
         //any apps yet
         if (userSelectedApps != null) {

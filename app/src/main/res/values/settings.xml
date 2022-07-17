@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="settings_side_quickbar">Choose QuickBar side</string>
+    <string name="settings_side_quickbar">QuickBar side</string>
     <string-array name="settings_values_align">
         <item>@string/left</item>
         <item>@string/right</item>
     </string-array>
 
-    <string name="settings_position_quickbar">Choose QuickBar position</string>
+    <string name="settings_position_quickbar">QuickBar position</string>
     <string-array name="settings_values_position">
         <item>@string/top</item>
         <item>@string/center</item>
         <item>@string/bottom</item>
     </string-array>
 
-    <string name="settings_side_show_icon">Choose show icon side</string>
-    <string name="settings_position_show_icon">Choose show icon position</string>
-    <string name="settings_position_hide_icon">Choose hide icon position</string>
+    <string name="settings_side_show_icon">Show icon side</string>
+    <string name="settings_position_show_icon">Show icon position</string>
+    <string name="settings_position_hide_icon">Hide icon position</string>
 </resources>

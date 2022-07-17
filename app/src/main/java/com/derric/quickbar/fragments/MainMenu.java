@@ -85,7 +85,7 @@ public class MainMenu extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            appInfos = (ArrayList<AppInfo>)  getArguments().getSerializable(AppConstants.APP_INFOS);
+            appInfos = (ArrayList<AppInfo>) getArguments().getSerializable(AppConstants.APP_INFOS);
         }
     }
 
@@ -154,6 +154,7 @@ public class MainMenu extends Fragment {
             });
             AlertDialog askPermissionDialog =  builder.create();
             askPermissionDialog.show();
+
         }
 
     }
@@ -169,7 +170,8 @@ public class MainMenu extends Fragment {
         Class<? extends Service> service = QuickBarService.class;
         Intent startIntent = new Intent(activity, service);
         //Add the apps info data, so that it can retrieved at other end
-        startIntent.putExtra(AppConstants.APP_INFOS,appInfos);
+        startIntent.putExtra(AppConstants.APP_INFOS, appInfos);
         ContextCompat.startForegroundService(activity, startIntent);
     }
+
 }

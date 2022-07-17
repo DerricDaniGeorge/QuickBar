@@ -105,43 +105,57 @@
     <PreferenceCategory>
     <SeekBarPreference
         android:key="quickbarTransparency"
-        android:title="Adjust QuickBar opacity"
+        android:title="QuickBar opacity"
         app:defaultValue="100"
         app:iconSpaceReserved="false"
+        app:showSeekBarValue="true"
+        app:updatesContinuously="true"
         app:min="5" />
     <SeekBarPreference
         android:key="hideIconTransparency"
-        android:title="Adjust Hide icon opacity"
+        android:title="Hide icon opacity"
         app:defaultValue="100"
+        app:showSeekBarValue="true"
+        app:updatesContinuously="true"
         app:iconSpaceReserved="false" />
     <SeekBarPreference
         android:key="showIconTransparency"
-        android:title="Adjust show icon opacity"
+        android:title="Show icon opacity"
         app:defaultValue="100"
+        app:showSeekBarValue="true"
+        app:updatesContinuously="true"
         app:iconSpaceReserved="false" />
     <SeekBarPreference
         android:key="appIconSize"
-        android:title="Adjust app icon size"
-        app:defaultValue="40"
+        android:title="App icon size"
+        app:defaultValue="35"
         app:iconSpaceReserved="false"
+        app:showSeekBarValue="true"
+        app:updatesContinuously="true"
         app:min="5" />
     <SeekBarPreference
         android:key="showIconSize"
-        android:title="Adjust show icon size"
-        app:defaultValue="22"
+        android:title="Show icon size"
+        app:defaultValue="25"
         app:iconSpaceReserved="false"
+        app:showSeekBarValue="true"
+        app:updatesContinuously="true"
         app:min="5" />
     <SeekBarPreference
         android:key="hideIconSize"
-        android:title="Adjust hide icon size"
-        app:defaultValue="22"
+        android:title="Hide icon size"
+        app:defaultValue="25"
         app:iconSpaceReserved="false"
+        app:showSeekBarValue="true"
+        app:updatesContinuously="true"
         app:min="5" />
     <SeekBarPreference
         android:key="hideQuickBarSeconds"
         android:title="Hide QuickBar after: (in seconds)"
-        app:defaultValue="10"
+        app:defaultValue="5"
         app:iconSpaceReserved="false"
+        app:updatesContinuously="true"
+        app:showSeekBarValue="true"
         app:min="1" />
     </PreferenceCategory>
     <!--    <SeekBarPreference-->
