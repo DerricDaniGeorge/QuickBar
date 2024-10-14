@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:versionCode="11" android:versionName="Release 1.11">
+    android:versionCode="12" android:versionName="Release 1.12">
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- Foreground Service permission(API level 28 or higher) -->
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" /> <!-- Start app on boot -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <!-- Start app on boot -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <!--
     To get all apps installed in the device..This needs to be removed later due to play store restrictions
@@ -73,9 +75,12 @@
 
         <service
             android:name=".services.QuickBarService"
+            android:foregroundServiceType="specialUse"
             android:enabled="true"
             android:exported="true"
-            android:stopWithTask="false" />
+            android:stopWithTask="false">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="This app is a floating apps launcher. The app launcher should floats on any screen, top of all other apps, so the user can launch apps from any mobile screen. This service must run full time to allow this feature."/>
+        </service>
 
         <activity
             android:name=".MainActivity"
